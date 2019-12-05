@@ -1,5 +1,5 @@
 const express = require("express");
-const axios = require("axios");
+// const axios = require("axios");
 const mysql = require("mysql");
 const app = express();
 const connection = mysql.createConnection({
@@ -14,6 +14,16 @@ connection.connect(error => {
   } else {
     console.log("successfully connected to DB");
   }
+});
+app.get("/", function(req, resp) {
+  connection.query("SELECT * FROM survey", function(error, rows, field) {
+    if (!!error) {
+      console.log("error sending to DB");
+    } else {
+      console.log("success\n");
+      console.log(rows);
+    }
+  });
 });
 app.use(express.static("../public"));
 
