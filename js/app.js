@@ -15,13 +15,14 @@ connection.connect(error => {
     console.log("successfully connected to DB");
   }
 });
-app.get("/", function(req, resp) {
+app.get("/api", function(req, resp) {
   connection.query("SELECT * FROM survey", function(error, rows, field) {
     if (!!error) {
       console.log("error sending to DB");
     } else {
       console.log("success\n");
       console.log(rows);
+      resp.send("hello" + rows);
     }
   });
 });
