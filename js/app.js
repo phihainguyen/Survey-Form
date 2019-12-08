@@ -15,6 +15,7 @@ connection.connect(error => {
     console.log("successfully connected to DB");
   }
 });
+app.use(express.json());
 app.get("/database", (req, resp) => {
   connection.query("SELECT * FROM survey", function(error, rows, field) {
     if (!!error) {
@@ -27,7 +28,9 @@ app.get("/database", (req, resp) => {
   });
 });
 app.post("/api", (req, resp) => {
-  console.log(req);
+  console.log("i got a request");
+  console.log(req.body.address);
+  resp.json({ status: "success" });
 });
 app.use(express.static("../public"));
 

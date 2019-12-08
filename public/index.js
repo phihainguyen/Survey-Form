@@ -10,9 +10,18 @@ function input(e) {
 name.addEventListener("keyup", input);
 
 console.log("hello world");
-const data = { hello: "chicken" };
+const data = { hello: "chicken", address: "1123 Stanely St" };
 const options = {
   method: "POST",
-  body: JSON.stringify(data)
+  body: JSON.stringify(data),
+  headers: {
+    "Content-Type": "application/json"
+  }
 };
-fetch("/api", option);
+
+getData();
+async function getData() {
+  const resp = await fetch("/api", options);
+  const data = await resp.json();
+  console.log(data.status);
+}
