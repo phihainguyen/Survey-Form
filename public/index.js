@@ -10,3 +10,9 @@ function input(e) {
 name.addEventListener("keyup", input);
 
 console.log("hello world");
+const data = { hello: "chicken" };
+const options = {
+  method: "POST",
+  body: JSON.stringify(data)
+};
+fetch("/api", option);
