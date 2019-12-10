@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const apiRroutes = require("./routes");
 const mysql = require("mysql");
+const axios = require("axios");
 const connection = mysql.createConnection({
   password: "password",
   database: "survey_db",
@@ -27,4 +28,7 @@ function afterConnection() {
   });
 }
 app.use(express.static("public"));
-//this should work
+//this should work to get client data
+axios.post("/db", resp => {
+  console.log(resp);
+});

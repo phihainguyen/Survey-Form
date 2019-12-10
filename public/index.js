@@ -11,17 +11,30 @@ name.addEventListener("keyup", input);
 
 console.log("hello world");
 const data = { hello: "chicken", address: "1123 Stanely St" };
-const options = {
-  method: "POST",
-  body: JSON.stringify(data),
-  headers: {
-    "Content-Type": "application/json"
-  }
-};
 
-getData();
-async function getData() {
-  const resp = await fetch("/api", options);
-  const data = await resp.json();
-  console.log(data.status);
-}
+// const options = {
+//   method: "POST",
+//   body: JSON.stringify(data),
+//   headers: {
+//     "Content-Type": "application/json"
+//   }
+// };
+
+// getData();
+// async function getData() {
+//   const resp = await fetch("/api", options);
+//   const data = await resp.json();
+//   console.log(data.status);
+// }
+axios({
+  method: "post",
+  url: "/db",
+  exData: {
+    firstName: "Finn",
+    lastName: "Williams"
+  }
+})
+  .then(repsonse => {
+    console.log(response);
+  })
+  .catch(err => console.log(err));
