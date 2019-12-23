@@ -37,3 +37,12 @@ app.post("/", (req, res, next) => {
   console.log("hello from post method");
   res.end(JSON.stringify(req.body));
 });
+
+const router = express.Router();
+app.use("/", router);
+
+router.post("/form", (req, res) => {
+  console.log("Req: ", JSON.stringify(req.body));
+
+  res.json({ msg: "Has been posted" });
+});

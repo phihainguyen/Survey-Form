@@ -31,13 +31,14 @@ const data = {
 //   const data = await resp.json();
 //   console.log(data.status);
 
-axios
-  .post("/", data)
-  .then(response => {
-    console.log("this is the response");
-    console.log(response);
-  })
-  .catch(err => console.log(err));
+// axios
+//   .post("/form", data)
+//   .then((req, res) => {
+//     console.log("this is the response");
+//     console.log("this is the ", req);
+//     res.json("helkjed adhas");
+//   })
+//   .catch(err => console.log(err));
 
 const nameValue = document.getElementById("name").value;
 const emailValue = document.getElementById("email").value;

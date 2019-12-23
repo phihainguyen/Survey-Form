@@ -15,7 +15,13 @@
           Thank you for taking the time to help us improve the platform
         </p>
       </header>
-      <form id="survey-form" action="/" method="POST">
+      <form action="/form" method="POST">
+        <input type="text" name="name" />
+        <input type="text" name="address" />
+        <input type="text" name="what" />
+        <button>Submit</button>
+      </form>
+      <form id="survey-form" action="/form" method="POST">
         <div class="form-group">
           <label for="name" id="name-label">Name </label>
           <input
