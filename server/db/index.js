@@ -18,4 +18,6 @@ surveydb.all = () => {
     });
   });
 };
+
+surveydb.post = ()=>
 module.exports = surveydb;

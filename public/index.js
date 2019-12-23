@@ -26,15 +26,13 @@ const data = { hello: "chicken", address: "1123 Stanely St" };
 //   const data = await resp.json();
 //   console.log(data.status);
 // }
-axios({
-  method: "post",
-  url: "/db",
-  exData: {
-    firstName: "Finn",
-    lastName: "Williams"
-  }
-})
-  .then(repsonse => {
+axios
+  .post("/db")
+  .then(response => {
     console.log(response);
   })
   .catch(err => console.log(err));
+
+const name = document.getElementById("name").value;
+const email = document.getElementById("email").value;
+const age = document.getElementById("age").value;
