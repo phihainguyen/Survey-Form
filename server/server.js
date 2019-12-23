@@ -26,18 +26,13 @@ function afterConnection() {
       throw err;
     }
     console.table(res);
-    connection.end();
+    // connection.end();
   });
 }
 
 //testing the post methods
 
 app.post("/", (req, res, next) => {
-  console.log(req.body);
-  res.send(req.body.hello);
-  // res.send(req.body.name);
-});
-apiRroutes.post("/post", (req, res, next) => {
-  console.log("hello from apiRoutes");
-  res.send(req.body);
+  console.log("hello from post method");
+  res.end(JSON.stringify(req.body));
 });
