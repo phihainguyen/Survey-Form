@@ -10,7 +10,12 @@ function input(e) {
 name.addEventListener("keyup", input);
 
 console.log("hello world");
-const data = { hello: "chicken", address: "1123 Stanely St" };
+const data = {
+  hello: "chicken",
+  address: "1123 Stanely St",
+  firstName: "Fred",
+  lastName: "Flintstone"
+};
 
 // const options = {
 //   method: "POST",
@@ -25,14 +30,15 @@ const data = { hello: "chicken", address: "1123 Stanely St" };
 //   const resp = await fetch("/api", options);
 //   const data = await resp.json();
 //   console.log(data.status);
-// }
+
 axios
-  .post("/db")
+  .post("/", data)
   .then(response => {
+    console.log("this is the response");
     console.log(response);
   })
   .catch(err => console.log(err));
 
-const name = document.getElementById("name").value;
-const email = document.getElementById("email").value;
-const age = document.getElementById("age").value;
+const nameValue = document.getElementById("name").value;
+const emailValue = document.getElementById("email").value;
+const ageValue = document.getElementById("age").value;

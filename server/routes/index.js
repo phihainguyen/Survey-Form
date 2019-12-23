@@ -12,17 +12,19 @@ router.get("/", async (req, res, next) => {
   }
 });
 router.post("/post", (req, res, next) => {
-  let newItem = new Item({
-    itemName: req.body.itemName
-  });
-  newItem.save(err => {
-    if (err) {
-      res.json(err);
-    } else {
-      res.json({ msg: "Item has successfully been posted" });
-    }
-  });
-  res.json(results);
+  // let newItem = new Item({
+  //   itemName: req.body.itemName
+  // });
+  // newItem.save(err => {
+  //   if (err) {
+  //     res.json(err);
+  //   } else {
+  //     res.json({ msg: "Item has successfully been posted" });
+  //   }
+  // });
+  // res.json(results);
+  console.log("this is the post from routerRoutes");
+  res.send({ hello: "Message has been posted" });
 });
 
 module.exports = router;

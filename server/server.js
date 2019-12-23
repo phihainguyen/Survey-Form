@@ -11,6 +11,7 @@ const connection = mysql.createConnection({
   port: "3306"
 });
 app.use(express.json());
+app.use(express.static("../public"));
 
 //allowing us to use the routes in the index.js file inside routes folder
 app.use("/api/ex", apiRroutes);
@@ -18,6 +19,7 @@ app.listen(process.env.PORT || "3000", () => {
   console.log(`listening on port ${process.env.PORT || "3000"}`);
   afterConnection();
 });
+
 function afterConnection() {
   connection.query("SELECT * FROM survey", function(err, res) {
     if (err) {
@@ -27,34 +29,15 @@ function afterConnection() {
     connection.end();
   });
 }
-app.use(express.static("public"));
 
-//this should work to get client data
+//testing the post methods
 
-var characters = [
-  {
-    routeName: "yoda",
-    name: "Yoda",
-    role: "Jedi Master",
-    age: 900,
-    forcePoints: 2000
-  },
-  {
-    routeName: "darthmaul",
-    name: "Darth Maul",
-    role: "Sith Lord",
-    age: 200,
-    forcePoints: 1200
-  },
-  {
-    routeName: "obiwankenobi",
-    name: "Obi Wan Kenobi",
-    role: "Jedi Master",
-    age: 55,
-    forcePoints: 1350
-  }
-];
-
-axios.get("/db", (req, res) => {
-  res.json(characters);
+app.post("/", (req, res, next) => {
+  console.log(req.body);
+  res.send(req.body.hello);
+  // res.send(req.body.name);
+});
+apiRroutes.post("/post", (req, res, next) => {
+  console.log("hello from apiRoutes");
+  res.send(req.body);
 });
