@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
   host: "localhost",
   port: "3306"
 });
-app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static("../public"));
 
 //allowing us to use the routes in the index.js file inside routes folder
