@@ -10,7 +10,9 @@ const connection = mysql.createConnection({
   host: "localhost",
   port: "3306"
 });
-app.use(express.urlencoded({ extended: false }));
+//extended false means you can't have objects nested, while true will allow that
+//wasn't able to get object back with express.json(), so had to use express.urlencoded()
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("../public"));
 
 //allowing us to use the routes in the index.js file inside routes folder
