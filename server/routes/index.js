@@ -11,27 +11,10 @@ router.get("/", async (req, res, next) => {
     res.sendStatus(500);
   }
 });
-router.post("/post", (req, res, next) => {
-  // let newItem = new Item({
-  //   itemName: req.body.itemName
-  // });
-  // newItem.save(err => {
-  //   if (err) {
-  //     res.json(err);
-  //   } else {
-  //     res.json({ msg: "Item has successfully been posted" });
-  //   }
-  // });
-  // res.json(results);
-  console.log("this is the post from routerRoutes");
-  res.send({ hello: "Message has been posted" });
+
+router.post("/", function(req, res) {
+  res.send(req.body);
+  console.log(req.body);
 });
 
-router.get("/", function(req, res) {
-  res.send("Birds home page");
-});
-// define the about route
-router.get("/about", function(req, res) {
-  res.send("About birds");
-});
 module.exports = router;
