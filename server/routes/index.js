@@ -17,8 +17,25 @@ router.get("/", async (req, res, next) => {
 
 router.post("/form", function(req, res) {
   console.log(req.body);
-
-  res.json({ msg: "Has been posted" });
+  const name = req.body.name;
+  const email = req.body.email;
+  const age = req.body.age;
+  const role = req.body.role;
+  const userRecommend = req.body.userRecommend;
+  const favorite = req.body.favorite;
+  const improve = req.body.improve;
+  const comment = req.body.comment;
+  const user = {
+    name: name,
+    email: email,
+    age: age,
+    role: role,
+    userRecommend: userRecommend,
+    favorite: favorite,
+    improve: improve,
+    comment: comment
+  };
+  res.json({ msg: user });
 });
 
 module.exports = router;
