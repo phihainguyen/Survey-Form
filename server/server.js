@@ -24,11 +24,16 @@ app.listen(process.env.PORT || "3000", () => {
 });
 
 function afterConnection() {
-  connection.query("SELECT * FROM survey", function(err, res) {
+  connection.query("SELECT * FROM survey", function(err, result) {
     if (err) {
       throw err;
     }
-    console.table(res);
+
+    console.table(result);
+    return result;
+    app.get("/db", (req, res, next) => {
+      res.send(result);
+    });
     // connection.end();
   });
 }

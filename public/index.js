@@ -1,3 +1,5 @@
+import Axios from "axios";
+
 const formGroup = document.querySelectorAll(".form-group");
 const name = document.querySelector("#name");
 formGroup.forEach(group => {
@@ -25,11 +27,12 @@ const data = {
 //   }
 // };
 
-// getData();
-// async function getData() {
-//   const resp = await fetch("/api", options);
-//   const data = await resp.json();
-//   console.log(data.status);
+getData();
+async function getData() {
+  const resp = await fetch("/db", options);
+  const data = await resp.json();
+  console.log(data.status);
+}
 
 // axios
 //   .post("/form", data)
@@ -43,3 +46,18 @@ const data = {
 const nameValue = document.getElementById("name").value;
 const emailValue = document.getElementById("email").value;
 const ageValue = document.getElementById("age").value;
+const submit = document.getElementById("submit");
+
+submit.addEventListener("click", () => {
+  // console.log(userInfo);
+  event.preventDefault();
+  const userInfo = {
+    name: nameValue,
+    email: emailValue,
+    age: ageValue
+  };
+  Axios.post("/post", userInfo, response => {
+    console.log("hello from the client side");
+    console.log(response);
+  });
+});
