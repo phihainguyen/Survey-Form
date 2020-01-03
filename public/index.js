@@ -1,4 +1,4 @@
-import Axios from "axios";
+// import Axios from "axios";
 
 const formGroup = document.querySelectorAll(".form-group");
 const name = document.querySelector("#name");
@@ -27,12 +27,12 @@ const data = {
 //   }
 // };
 
-getData();
-async function getData() {
-  const resp = await fetch("/db", options);
-  const data = await resp.json();
-  console.log(data.status);
-}
+// getData();
+// async function getData() {
+//   const resp = await fetch("/db", options);
+//   const data = await resp.json();
+//   console.log(data.status);
+// }
 
 // axios
 //   .post("/form", data)
@@ -42,22 +42,40 @@ async function getData() {
 //     res.json("helkjed adhas");
 //   })
 //   .catch(err => console.log(err));
-
-const nameValue = document.getElementById("name").value;
-const emailValue = document.getElementById("email").value;
-const ageValue = document.getElementById("age").value;
 const submit = document.getElementById("submit");
 
 submit.addEventListener("click", () => {
   // console.log(userInfo);
   event.preventDefault();
+
+  const nameValue = document.getElementById("name").value;
+  const emailValue = document.getElementById("email").value;
+  const ageValue = document.getElementById("age").value;
+  const roleValue = document.getElementById("role").value;
+  const recommendValue = document.getElementsByName("userRecommend");
+  let recValue;
+
+  for (let i = 0; i < recommendValue.length; i++) {
+    if (recommendValue[i].checked) {
+      console.log(recommendValue[i].value);
+      recValue = recommendValue[i].value;
+    }
+  }
   const userInfo = {
     name: nameValue,
     email: emailValue,
-    age: ageValue
+    age: ageValue,
+    role: roleValue,
+    recommend: recValue
   };
-  Axios.post("/post", userInfo, response => {
-    console.log("hello from the client side");
-    console.log(response);
-  });
+  console.log(recommendValue);
+  submitData(userInfo);
+
+  // Axios.post("/post", userInfo, response => {
+  //   console.log("hello from the client side");
+  //   console.log(response);
+  // });
 });
+function submitData(data) {
+  console.log(data);
+}
